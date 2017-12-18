@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>Register</h1>
+    <!-- Use v-model to bind to the model -->
     <input
       type="email"
       name="email"
@@ -8,6 +9,7 @@
       placeholder="email"
     />
     </br>
+    <!-- Use v-model to bind to the model -->
     <input
       type="password"
       name="password"
@@ -16,38 +18,38 @@
     />
     </br>
     <button
-      @click="register">
+      @click="register">	<!-- Add a click listener that calls the "register" method, below. -->
       Register
     </button>
   </div>
 </template>
 
 <script>
-import AuthenticationService from '@/services/AuthenticationService'
+import AuthenticationService from "@/services/AuthenticationService"
 export default {
   data () {
     return {
-      email: "abc",
+      email: "abc",		// Bound to the HTML
       password: "123"
     }
   },
   methods: {
-    async register() {
-      const response = await AuthenticationService.register({
+    async register() {	// Called whenever the "Register" button is clicked.	// Use async
+      const response = await AuthenticationService.register({				// Use await
         email: this.email,
-        password: this.password
+        password: this.password	// Bound to the HTML
       })
       console.log(response.data);
       // console.log("register button clicked: ", this.email, this.password);
     }
   }
   // ,
-  // watch: {
+  // watch: {				// Watch for changes. Run this whenever "email" value changes.
   //   email(value){
   //     console.log("email has changed: ", value);
   //   }
   // },
-  // mounted() {
+  // mounted() {			// Run this whenever this vue component is mounted onto the page.
   //   setTimeout(() => {
   //     this.email = "Hello, world";
   //   }, 2000)
