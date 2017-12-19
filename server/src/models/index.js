@@ -21,11 +21,12 @@ fs
     )
     .forEach((file) => {        // Process all other files
         const model = sequelize.import(path.join(__dirname, file))  // Add the model to the database
+        db[model.name] = model
     })
 
 // Set up vars that will be useful elsewhere
 db.sequelize = sequelize
-db.Sequelize = sequelize
+db.Sequelize = Sequelize
 
 module.exports = db
 
