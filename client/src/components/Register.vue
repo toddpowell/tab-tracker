@@ -17,6 +17,8 @@
       placeholder="password"
     />
     </br>
+    <div class="error" v-html="error"/>
+    </br>
     <button
       @click="register">	<!-- Add a click listener that calls the "register" method, below. -->
       Register
@@ -30,19 +32,32 @@ export default {
   data () {
     return {
       email: "abc",		// Bound to the HTML
-      password: "123"
+      password: "123",
+      error: null
     }
   },
   methods: {
     async register() {	// Called whenever the "Register" button is clicked.	// Use async
-      const response = await AuthenticationService.register({				// Use await
-        email: this.email,
-        password: this.password	// Bound to the HTML
-      })
-      console.log(response.data);
-      // console.log("register button clicked: ", this.email, this.password);
+      try {
+        await AuthenticationService.register({		// Use await
+          email: this.email,                      // Bound to the HTML
+          password: this.password	                // Bound to the HTML
+        })        
+      } catch (error) {
+        this.error = error.response.data.error
+      }
     }
   }
+  // methods: {
+  //   async register() {	// Called whenever the "Register" button is clicked.	// Use async
+  //     const response = await AuthenticationService.register({				// Use await
+  //       email: this.email,
+  //       password: this.password	// Bound to the HTML
+  //     })
+  //     console.log(response.data);
+  //     // console.log("register button clicked: ", this.email, this.password);
+  //   }
+  // }
   // ,
   // watch: {				// Watch for changes. Run this whenever "email" value changes.
   //   email(value){
@@ -58,4 +73,7 @@ export default {
 </script>
 
 <style scoped>
+  .error {
+    color: red
+  }
 </style>

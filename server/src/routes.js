@@ -1,4 +1,5 @@
 const AuthenticationController = require('./controllers/AuthenticationController')
+const AuthenticationControllerPolicy = require('./policies/AuthenticationControllerPolicy')
 
 module.exports = (app) => {
     // Create a simple endpoint
@@ -16,6 +17,6 @@ module.exports = (app) => {
     // }) 
 
     app.post('/register',
-        AuthenticationController.register)
-
+        AuthenticationControllerPolicy.register,    // Do this. Then, the policy file calls next()
+        AuthenticationController.register)          // Then this line runs, after next()
 }
