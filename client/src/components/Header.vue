@@ -24,7 +24,12 @@
                 </v-btn>
             </router-link>
         </v-toobar-items> -->
-
+        <v-toobar-items>
+                <v-btn flat dark
+                    @click="navigateTo({name: 'login'})">
+                    Log In
+                </v-btn>
+        </v-toobar-items>
         <v-toobar-items>
                 <v-btn flat dark
                     @click="navigateTo({name: 'register'})">
