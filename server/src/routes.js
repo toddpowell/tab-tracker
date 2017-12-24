@@ -19,4 +19,7 @@ module.exports = (app) => {
     app.post('/register',
         AuthenticationControllerPolicy.register,    // Do this. Then, the policy file calls next()
         AuthenticationController.register)          // Then this line runs, after next()
+
+    app.post('/login',
+        AuthenticationController.login)         
 }
