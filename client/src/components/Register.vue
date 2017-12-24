@@ -37,8 +37,8 @@ import AuthenticationService from "@/services/AuthenticationService"
 export default {
   data () {
     return {
-      email: "abc",		// Bound to the HTML
-      password: "123",
+      email: "test1@gmail.com",		// Bound to the HTML
+      password: "12345678",
       error: null
     }
   },

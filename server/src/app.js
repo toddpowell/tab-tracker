@@ -17,6 +17,7 @@ require('./routes')(app);
 
 // Connect Sequelize to the database that we're configured for and create the tables if they don't exist.
 // Then start the server
+// sequelize.sync({force: true})
 sequelize.sync()
     .then(() => {
 
