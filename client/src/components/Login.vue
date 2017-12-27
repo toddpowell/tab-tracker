@@ -1,5 +1,6 @@
 <template>
-  <v-layout column>
+  <v-layout column
+    v-if="!$store.state.isUserLoggedIn">
     <v-flex xs6 offset-xs3>
       <panel title="Log In">
         <form name="tab-tracker-form" autocomplete="off">
