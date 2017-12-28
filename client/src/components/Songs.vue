@@ -1,16 +1,45 @@
 <template>
     <v-layout column>
         <v-flex xs6 offset-xs3>
-            <panel title="Songs"/>
+            <panel title="Songs">
+                <div v-for="song in songs" 
+                    :key="song.id">
+                    {{song.title}} - 
+                    {{song.artist}} - 
+                    {{song.album}}
+                </div>
+            </panel>
         </v-flex>
     </v-layout>
 </template>
 
 <script>
+import SongsService from '@/services/SongsService'
 import Panel from '@/components/Panel'
 export default {
     components: {
         Panel
+    },
+    data() {
+        return {
+            songs: null
+            // songs: [
+            //     {
+            //     title: "The Gunner's Dream",
+            //     artist: "Pink Floyd",
+            //     album: "The Final Cut"
+            //     },
+            //     {
+            //     title: "The Gunner's Dream",
+            //     artist: "Pink Floyd",
+            //     album: "The Final Cut"
+            //     }
+            // ]
+        }
+    },
+    async mounted() {
+        // Do request to back end for all songs
+        this.songs = (await SongsService.index()).data  // Don't forget to use .data!
     }
 }
 </script>

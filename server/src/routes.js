@@ -1,5 +1,6 @@
 const AuthenticationController = require('./controllers/AuthenticationController')
 const AuthenticationControllerPolicy = require('./policies/AuthenticationControllerPolicy')
+const SongsController = require('./controllers/SongsController')
 
 module.exports = (app) => {
     // Create a simple endpoint
@@ -21,5 +22,10 @@ module.exports = (app) => {
         AuthenticationController.register)          // Then this line runs, after next()
 
     app.post('/login',
-        AuthenticationController.login)         
+        AuthenticationController.login)   
+
+    app.get('/songs',
+        SongsController.index)   
+    app.post('/songs',
+        SongsController.post)         
 }
