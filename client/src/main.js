@@ -12,6 +12,7 @@ Vue.config.productionTip = false
 
 Vue.use(Vuetify)
 
+// The store will change whenever the route changes
 sync(store, router)
 
 /* eslint-disable no-new */
