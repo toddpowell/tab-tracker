@@ -4,12 +4,15 @@
             <v-flex xs6>
                 <song-metadata :song="song" />
             </v-flex>
+
+            <v-flex xs6 class="ml-2">
+                <you-tube :youtubeId="song.youtubeId" />
+            </v-flex>
         </v-layout>
 
-        <v-layout>
+        <!-- <v-layout>
             <v-flex xs6>
                 <panel title="YouTube Video">
-                    <!-- Youtube embed -->
                 </panel>
             </v-flex>
 
@@ -21,14 +24,15 @@
                     ></textarea> 
                 </panel>
             </v-flex>        
-        </v-layout>
+        </v-layout> -->
     </div>
 </template>
 
 <script>
-import SongsService from '@/services/SongsService'
 import Panel from "@/components/Panel"
 import SongMetadata from './SongMetadata'
+import SongsService from '@/services/SongsService'
+import YouTube from './YouTube'
 
 export default {
     data () {
@@ -45,7 +49,8 @@ export default {
     },
     components: {
         Panel,
-        SongMetadata
+        SongMetadata,
+        YouTube
     }
 }
 </script>

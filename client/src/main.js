@@ -7,10 +7,14 @@ import Vuetify from 'vuetify'
 import { sync } from 'vuex-router-sync'
 import store from '@/store/store'
 import 'vuetify/dist/vuetify.min.css'
+import VueYouTubeEmbed from 'vue-youtube-embed'
+// if you don't want install the component globally
+// Vue.use(VueYouTubeEmbed, { global: false })
 
 Vue.config.productionTip = false
 
 Vue.use(Vuetify)
+Vue.use(VueYouTubeEmbed)
 
 // The store will change whenever the route changes
 sync(store, router)
